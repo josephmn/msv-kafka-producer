@@ -1,0 +1,22 @@
+server:
+    port: 7070
+spring:
+    application:
+        name: msv-wikimedia-producer
+        version: "@project.version@"
+    banner:
+        location: classpath:banner/banner-prod.txt
+    profiles:
+        active: prod
+    #  cloud:
+    #    config:
+    #      uri: ${CONFIG_SERVER:http://localhost:8888}
+    #      fail-fast: true
+    output:
+        ansi:
+            enabled: ALWAYS
+    kafka:
+        bootstrap-servers: localhost:9092
+        producer:
+            key-serializer: org.apache.kafka.common.serialization.StringSerializer
+            value-serializer: org.apache.kafka.common.serialization.StringSerializer
