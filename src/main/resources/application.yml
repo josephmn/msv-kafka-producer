@@ -12,11 +12,26 @@ spring:
     #    config:
     #      uri: ${CONFIG_SERVER:http://localhost:8888}
     #      fail-fast: true
+    datasource:
+        url: jdbc:postgresql://localhost:5432/Azure
+        username: postgres
+        password: Sgr9cl4v3s
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
     output:
         ansi:
             enabled: ALWAYS
     kafka:
-        bootstrap-servers: localhost:9092
+        topics:
+            customerNotification: customer-notification
         producer:
+            bootstrap-servers: ${HOST_PRODUCER:localhost:9092}
             key-serializer: org.apache.kafka.common.serialization.StringSerializer
-            value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#            value-serializer: org.apache.kafka.common.serialization.StringSerializer
+            value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+logging:
+    level:
+        root: INFO
