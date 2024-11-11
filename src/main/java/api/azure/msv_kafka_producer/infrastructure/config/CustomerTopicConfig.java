@@ -1,4 +1,4 @@
-package api.azure.msv_kafka_producer.infraestructure.config;
+package api.azure.msv_kafka_producer.infrastructure.config;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.admin.NewTopic;

@@ -1,7 +1,8 @@
-package api.azure.msv_kafka_producer.infraestructure.producer;
+package api.azure.msv_kafka_producer.infrastructure.producer;
 
+import api.azure.kafka.user;
 import api.azure.msv_kafka_producer.domain.entities.Customer;
-import api.azure.msv_kafka_producer.infraestructure.config.KafkaProperties;
+import api.azure.msv_kafka_producer.infrastructure.config.KafkaProperties;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -18,8 +19,8 @@ public class CustomerProducer {
     private final KafkaTemplate<String, Customer> kafkaTemplate;
     private final KafkaProperties kafkaProperties;
 
-    public void sendMessage(Customer customer) {
-        Message<Customer> message = MessageBuilder
+    public void sendMessage(user customer) {
+        Message<user> message = MessageBuilder
                 .withPayload(customer)
                 .setHeader(KafkaHeaders.TOPIC, kafkaProperties.getTopics().getCustomerNotification())
                 .build();
